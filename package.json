@@ -1,0 +1,31 @@
+{
+  "name": "rg-pet-fullstack",
+  "version": "2.0.0",
+  "type": "module",
+  "description": "Sistema completo de documentos para pets - Fullstack",
+  "main": "admin/server.js",
+  "scripts": {
+    "dev": "node admin/server.js",
+    "start": "node admin/server.js",
+    "frontend": "live-server public --port=5500",
+    "build": "echo 'No build needed'",
+    "railway": "node admin/server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "@supabase/supabase-js": "^2.38.0",
+    "helmet": "^7.1.0",
+    "express-rate-limit": "^7.1.5"
+  },
+  "keywords": [
+    "pets",
+    "documents",
+    "fullstack",
+    "express",
+    "supabase"
+  ],
+  "author": "RG Pet Team",
+  "license": "MIT"
+}
