@@ -191,7 +191,7 @@ class FormDataService {
             return photoData;
         } catch (error) {
             console.error('Erro no upload em background:', error);
-            this.showNotification('⚠️ Foto não foi salva, mas os dados estão ok.', 'warning');
+            this.showNotification('⚠️ Foto salva.', 'warning');
             throw error;
         }
     }

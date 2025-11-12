@@ -203,7 +203,7 @@ h4 {
     display: block;
     font-weight: 600;
     color: #2c3e50;
-    margin-bottom: 12px;
+    margin-bottom: 5px;
     font-size: 1.1em;
     transition: all 0.3s ease;
 }
@@ -212,7 +212,7 @@ h4 {
 .form-container select {
     padding: 16px 20px;
     font-size: 1.1em;
-    margin-bottom: 20px;
+    margin-bottom: 2px;
     width: 100%;
     border: 2px solid #e9ecef;
     border-radius: 12px;
@@ -1188,6 +1188,20 @@ canvas:hover {
         margin: 15px auto;
     }
 
+    .form-container input[type="text"],
+.form-container select {
+    padding: 16px 20px;
+    font-size: 1.1em;
+    margin-bottom: 2px;
+    width: 100%;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    font-family: 'Arial', sans-serif;
+}
+
     .step {
         padding: 0 10px;
     }
@@ -1229,6 +1243,7 @@ canvas:hover {
     .nav-btn {
         width: 100%;
         justify-content: center;
+      
     }
     
     .color-option {
