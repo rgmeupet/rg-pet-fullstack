@@ -21,8 +21,8 @@ let formData = {
 
 // Sistema de backgrounds com bolinhas de cores
 let currentBackgrounds = {
-    carteira_frente: 'img/5.png',
-    carteira_verso: 'img/1.png',
+    carteira_frente: 'img/z7.png',
+    carteira_verso: 'img/z8.png',
     vacina: 'img/9.png',
     certidao: 'img/a1.png',
     medicacao: 'img/14.png',
@@ -31,16 +31,20 @@ let currentBackgrounds = {
 
 const backgrounds = {
     carteira_frente: [
-        { color: '#FF6B6B', image: 'img/5.png' },
-        { color: '#4ECDC4', image: 'img/7.png' },
-        { color: '#45B7D1', image: 'img/5.png' },
-        { color: '#96CEB4', image: 'img/7.png' }
+        { color: '#ff0088ff', image: 'img/z7.png' },
+        { color: '#4ECDC4', image: 'img/z5.png' },
+        { color: '#1e00ffff', image: 'img/z1.png' },
+        { color: '#fea100ff', image: 'img/z3.png' },
+        { color: '#a204b7ff', image: 'img/z9.png' },
+        { color: '#e675f0ff', image: 'img/z11.png' }
     ],
     carteira_verso: [
-        { color: '#FF6B6B', image: 'img/1.png' },
-        { color: '#4ECDC4', image: 'img/2.png' },
-        { color: '#45B7D1', image: 'img/3.png' },
-        { color: '#96CEB4', image: 'img/4.png' }
+        { color: '#ff0088ff', image: 'img/z8.png' },
+        { color: '#4ECDC4', image: 'img/z6.png' },
+        { color: '#1e00ffff', image: 'img/z2.png' },
+        { color: '#fea100ff', image: 'img/z4.png' },
+        { color: '#a204b7ff', image: 'img/z10.png' },
+        { color: '#e675f0ff', image: 'img/z12.png' }
     ],
     vacina: [
         { color: '#FF6B6B', image: 'img/9.png' },
@@ -76,7 +80,6 @@ document.addEventListener('DOMContentLoaded', function() {
 function initApp() {
     initEventListeners();
     updateProgress();
-    initTutorialModal();
     initPhotoPreview();
     
     // Inicializa as opções de quiz/card
@@ -422,71 +425,8 @@ function fecharModal() {
     }
 }
 
-// Modal Tutorial
-function initTutorialModal() {
-    const modal = document.getElementById('tutorialModal');
-    const closeBtn = document.getElementById('closeTutorialBtn');
-    const demoVideo = document.getElementById('demoVideo');
-    const demoSoundBtn = document.getElementById('demoSoundBtn');
-    const openTutorialBtn = document.getElementById('openTutorialBtn');
+// Modal Tutorial ficava aqui
 
-    if (!modal || !closeBtn || !demoVideo || !demoSoundBtn || !openTutorialBtn) return;
-
-    function resetTutorialMedia() {
-        demoVideo.currentTime = 0;
-        demoVideo.muted = true;
-        demoVideo.pause();
-        demoSoundBtn.style.display = 'flex';
-        demoSoundBtn.style.opacity = '1';
-        demoSoundBtn.style.pointerEvents = 'auto';
-    }
-
-    function openModal() {
-        clearTimeout(modal.timer); // Limpa o timer de abertura
-        resetTutorialMedia();
-        modal.style.display = 'flex';
-        setTimeout(() => {
-            modal.style.opacity = '1';
-            demoVideo.play().catch(e => console.log('Erro ao reproduzir vídeo:', e));
-        }, 10);
-    }
-
-    function closeModal() {
-        modal.style.opacity = '0';
-        setTimeout(() => {
-            modal.style.display = 'none';
-            resetTutorialMedia();
-        }, 500);
-    }
-
-    // Armazena o timer no objeto modal para poder limpá-lo
-    modal.timer = setTimeout(openModal, 10000);
-
-    closeBtn.addEventListener('click', closeModal);
-
-    demoSoundBtn.addEventListener('click', function() {
-        demoVideo.muted = false;
-        demoSoundBtn.style.opacity = '0';
-        demoSoundBtn.style.pointerEvents = 'none';
-        setTimeout(() => {
-            demoSoundBtn.style.display = 'none';
-        }, 300);
-    });
-
-    openTutorialBtn.addEventListener('click', openModal);
-
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            closeModal();
-        }
-    });
-
-    modal.addEventListener('transitionend', function(e) {
-        if (e.propertyName === 'opacity' && modal.style.opacity === '0') {
-            demoVideo.pause();
-        }
-    });
-}
 
 // Formatação de nome
 function formatarNome(nome) {
@@ -1258,13 +1198,21 @@ function drawCertidaoContent(ctx, canvas) {
         ctx.restore();
     }
 
-    if (formData.rua && formData.numeroCasa && formData.bairro) {
+    if (formData.rua) {
         ctx.save();
         ctx.textAlign = 'center';
         ctx.font = '30px Vibur';
         ctx.fillStyle = '#00008B';
-        const enderecoCompleto = `${formData.rua}, ${formData.numeroCasa} - ${formData.bairro}`;
-        ctx.fillText(enderecoCompleto, canvas.width / 2 + 20, canvas.height / 2 - 239);
+        ctx.fillText(formData.rua, canvas.width / 2 + 20, canvas.height / 2 - 239);
+        ctx.restore();
+    }
+
+   if (formData.numeroCasa) {
+        ctx.save();
+        ctx.textAlign = 'center';
+        ctx.font = '30px Vibur';
+        ctx.fillStyle = '#00008B';
+        ctx.fillText(formData.numeroCasa, canvas.width / 2 - 10, canvas.height / 2 - 130);
         ctx.restore();
     }
 
