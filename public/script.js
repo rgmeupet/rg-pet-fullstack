@@ -35,16 +35,16 @@ const backgrounds = {
         { color: '#4ECDC4', image: 'img/z5.png' },
         { color: '#1e00ffff', image: 'img/z1.png' },
         { color: '#fea100ff', image: 'img/z3.png' },
-        { color: '#a204b7ff', image: 'img/z9.png' },
-        { color: '#e675f0ff', image: 'img/z11.png' }
+        { color: '#a204b7ff', image: 'img/z9.png' }
+       
     ],
     carteira_verso: [
         { color: '#ff0088ff', image: 'img/z8.png' },
         { color: '#4ECDC4', image: 'img/z6.png' },
         { color: '#1e00ffff', image: 'img/z2.png' },
         { color: '#fea100ff', image: 'img/z4.png' },
-        { color: '#a204b7ff', image: 'img/z10.png' },
-        { color: '#e675f0ff', image: 'img/z12.png' }
+        { color: '#a204b7ff', image: 'img/z10.png' }
+        
     ],
     vacina: [
         { color: '#FF6B6B', image: 'img/9.png' },
