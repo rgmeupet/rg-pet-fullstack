@@ -816,7 +816,7 @@ canvas:hover {
 }
 
 .upsell-img {
-    max-width: 350px;
+    max-width: 450px;
     height: auto;
     border-radius: 12px;
     margin-bottom: 25px;
@@ -828,39 +828,126 @@ canvas:hover {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    background: #049117;
-    color: white;
-    padding: 18px 40px;
+    padding: 10px 40px;
     border-radius: 50px;
     text-decoration: none;
-    font-size: 1.2em;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 20px rgba(4, 145, 23, 0.4);
+    font-size: 15px;
+    font-weight: 700;
     font-family: 'Arial', sans-serif;
+    cursor: pointer;
     position: relative;
     overflow: hidden;
+
+    color: #ffffff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    /* Borda neon */
+    border: 3px solid #11ff88;
+
+    /*  Gradiente em verdes claros */
+    background: linear-gradient(
+        120deg,
+        #1a5b2a,
+        #1f8f3d,
+        #26c957,
+        #1f8f3d,
+        #1a5b2a
+    );
+    background-size: 300% 300%;
+
+    /* Animações */
+    animation: 
+        waveGradient 5s ease-in-out infinite,
+        pulseGlow 3s ease-in-out infinite,
+        shakeBtn 3s infinite;
+
+    /* Glow externo */
+    box-shadow:
+        0 0 12px #11ff8880,
+        0 0 32px #11ff8850,
+        0 0 65px #11ff8830;
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+/* ✨ Brilho correndo diagonal */
 .upsell-button::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
-    left: -100%;
+    left: -150%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    transition: left 0.5s ease;
+    background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.28) 50%,
+        transparent 100%
+    );
+    transform: skewX(-20deg);
+    animation: shine 2.8s infinite ease-in-out;
 }
 
-.upsell-button:hover::before {
-    left: 100%;
-}
-
+/* Hover premium */
 .upsell-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(4, 145, 23, 0.6);
-    background: #037312;
+    transform: scale(1.04);
+    box-shadow:
+        0 0 20px #11ff88,
+        0 0 50px #11ff88,
+        0 0 100px #11ff88;
+}
+
+/* Animação do gradiente */
+@keyframes waveGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Glow pulsante */
+@keyframes pulseGlow {
+    0% {
+        box-shadow:
+            0 0 12px #11ff8880,
+            0 0 30px #11ff8850,
+            0 0 60px #11ff8830;
+        border-color: #11ff88;
+    }
+    50% {
+        box-shadow:
+            0 0 22px #55ffbb,
+            0 0 50px #55ffbb,
+            0 0 110px #55ffbb;
+        border-color: #55ffbb;
+    }
+    100% {
+        box-shadow:
+            0 0 12px #11ff8880,
+            0 0 30px #11ff8850,
+            0 0 60px #11ff8830;
+        border-color: #11ff88;
+    }
+}
+
+/* Brilho correndo */
+@keyframes shine {
+    0% { left: -150%; }
+    50% { left: 150%; }
+    100% { left: 150%; }
+}
+
+/* Tremidinha suave a cada 3s */
+@keyframes shakeBtn {
+    0%, 97%, 100% {
+        transform: translateX(0);
+    }
+    98% {
+        transform: translateX(-3px);
+    }
+    99% {
+        transform: translateX(3px);
+    }
 }
 
 /* Modal de Aviso JPEG */
@@ -1172,7 +1259,7 @@ canvas:hover {
     }
     
     .upsell-img {
-        max-width: 240px;
+        max-width: 340px;
     }
     
     .demo-smartphone {
@@ -1207,6 +1294,10 @@ canvas:hover {
     
     .form-container {
         padding: 15px;
+    }
+    
+    .upsell-img {
+        max-width: 340px;
     }
     
     .step-title {
