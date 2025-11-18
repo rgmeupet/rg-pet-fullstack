@@ -21,12 +21,13 @@ let formData = {
 
 // Sistema de backgrounds com bolinhas de cores
 let currentBackgrounds = {
-    carteira_frente: 'img/z7.png',
-    carteira_verso: 'img/z8.png',
-    vacina: 'img/9.png',
-    certidao: 'img/a1.png',
-    medicacao: 'img/14.png',
-    peso: 'img/11.png'
+    carteira_frente: 'img/z5.png',
+    carteira_verso: 'img/z6.png',
+    vacina: 'img/v2.png',
+    certidao: 'img/c1.png',
+    medicacao: 'img/m1.png',
+    peso: 'img/p12.png',
+    porta_retrato: 'img/p2.jpg'
 };
 
 const backgrounds = {
@@ -47,28 +48,39 @@ const backgrounds = {
         
     ],
     vacina: [
-        { color: '#FF6B6B', image: 'img/9.png' },
-        { color: '#4ECDC4', image: 'img/10.png' },
-        { color: '#45B7D1', image: 'img/9.png' },
-        { color: '#96CEB4', image: 'img/10.png' }
+        { color: '#ff0088ff', image: 'img/v1.png' },
+        { color: '#4ECDC4', image: 'img/v2.png' },
+        { color: '#1e00ffff', image: 'img/v4.png' },
+        { color: '#fea100ff', image: 'img/v3.png' },
+        { color: '#a204b7ff', image: 'img/v5.png' }
     ],
     certidao: [
-        { color: '#FFEAA7', image: 'img/a1.png' },
-        { color: '#D8BFD8', image: 'img/a2.png' },
-        { color: '#87CEEB', image: 'img/a3.png' },
-        { color: '#98FB98', image: 'img/a4.png' }
+        { color: '#ff0088ff', image: 'img/c2.png' },
+        { color: '#4ECDC4', image: 'img/c1.png' },
+        { color: '#1e00ffff', image: 'img/c5.png' },
+        { color: '#fea100ff', image: 'img/c3.png' },
+        { color: '#a204b7ff', image: 'img/c4.png' }
     ],
     medicacao: [
-        { color: '#FF9999', image: 'img/14.png' },
-        { color: '#99FF99', image: 'img/14.png' },
-        { color: '#9999FF', image: 'img/14.png' },
-        { color: '#FFFF99', image: 'img/14.png' }
+        { color: '#ff0088ff', image: 'img/m2.png' },
+        { color: '#4ECDC4', image: 'img/m1.png' },
+        { color: '#1e00ffff', image: 'img/m3.png' },
+        { color: '#fea100ff', image: 'img/m4.png' },
+        { color: '#a204b7ff', image: 'img/m5.png' }
     ],
     peso: [
-        { color: '#FFB366', image: 'img/11.png' },
-        { color: '#66FFB3', image: 'img/12.png' },
-        { color: '#B366FF', image: 'img/11.png' },
-        { color: '#FF66B3', image: 'img/12.png' }
+        { color: '#ff0088ff', image: 'img/p11.png' },
+        { color: '#4ECDC4', image: 'img/p12.png' },
+        { color: '#1e00ffff', image: 'img/p13.png' },
+        { color: '#fea100ff', image: 'img/p15.png' },
+        { color: '#a204b7ff', image: 'img/p14.png' }
+    ],
+    porta_retrato: [
+        { color: '#ff0088ff', image: 'img/p1.jpg' },
+        { color: '#4ECDC4', image: 'img/p2.jpg' },
+        { color: '#1e00ffff', image: 'img/p3.png' },
+        { color: '#fea100ff', image: 'img/p4.png' },
+        { color: '#a204b7ff', image: 'img/p5.png' }
     ]
 };
 
@@ -544,6 +556,7 @@ function initBackgroundSelectors() {
     createBackgroundSelector('certidao', 'colorOptionsCertidao');
     createBackgroundSelector('medicacao', 'colorOptionsMedicacao');
     createBackgroundSelector('peso', 'colorOptionsPeso');
+    createBackgroundSelector('porta_retrato', 'colorOptionsPortaRetrato');
 }
 
 function createBackgroundSelector(documentKey, containerId) {
@@ -588,10 +601,10 @@ function renderAllCanvases() {
     renderSpecificCanvas('certidao');
     renderSpecificCanvas('medicacao');
     renderSpecificCanvas('peso');
+    renderSpecificCanvas('porta_retrato');
     renderTimeCanvas();
     renderMarcador();
     renderPolaroid();
-    renderPortaRetrato();
 }
 
 function renderSpecificCanvas(documentKey) {
@@ -625,6 +638,11 @@ function renderSpecificCanvas(documentKey) {
             break;
         case 'peso':
             canvas = document.getElementById('controlePesoCanvas');
+            width = 768;
+            height = 1134;
+            break;
+        case 'porta_retrato':
+            canvas = document.getElementById('carteiraSetimaCanvas');
             width = 768;
             height = 1134;
             break;
@@ -663,6 +681,9 @@ function renderSpecificCanvas(documentKey) {
                 break;
             case 'peso':
                 drawControlePeso(ctx, canvas);
+                break;
+            case 'porta_retrato':
+                drawPortaRetratoContent(ctx, canvas);
                 break;
         }
         
@@ -892,7 +913,7 @@ function renderPolaroid() {
     };
 }
 
-// Porta Retrato
+// Porta Retrato - AGORA COM SISTEMA DE BACKGROUNDS
 function renderPortaRetrato() {
     const canvas = document.getElementById('carteiraSetimaCanvas');
     if (!canvas) return;
@@ -904,7 +925,7 @@ function renderPortaRetrato() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
     const background = new Image();
-    background.src = formData.sexo === 'feminino' ? 'img/1.jpg' : 'img/2.jpg';
+    background.src = currentBackgrounds.porta_retrato; // Usa o background selecionado
     
     background.onload = function() {
         ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
@@ -945,6 +966,54 @@ function renderPortaRetrato() {
             ctx.restore();
         }
     };
+    
+    background.onerror = function() {
+        console.error('Erro ao carregar background do porta retrato:', currentBackgrounds.porta_retrato);
+        // Fallback para o sistema antigo baseado no sexo
+        const fallbackBackground = formData.sexo === 'feminino' ? 'img/1.jpg' : 'img/2.jpg';
+        const fallbackImg = new Image();
+        fallbackImg.src = fallbackBackground;
+        fallbackImg.onload = function() {
+            ctx.drawImage(fallbackImg, 0, 0, canvas.width, canvas.height);
+            addWatermark(ctx, canvas);
+        };
+    };
+}
+
+// Função de desenho do conteúdo do porta retrato
+function drawPortaRetratoContent(ctx, canvas) {
+    if (formData.foto) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            const img = new Image();
+            img.onload = function() {
+                const imgWidth = 379 * 1.5;
+                const imgHeight = 485 * 1.5;
+
+                const imgX = (canvas.width - imgHeight) / 2;
+                const imgY = (canvas.height - imgWidth) / 2 - 98;
+
+                ctx.save();
+                ctx.translate(imgX + imgHeight / 2, imgY + imgWidth / 2);
+                ctx.rotate(0);
+                ctx.drawImage(img, -imgWidth / 2, -imgHeight / 2, imgWidth, imgHeight);
+                ctx.restore();
+            };
+            img.src = event.target.result;
+        };
+        reader.readAsDataURL(formData.foto);
+    }
+
+    // Adiciona o nome
+    if (formData.nome) {
+        ctx.save();
+        ctx.textAlign = 'center';
+        ctx.font = '40px Vibur';
+        ctx.fillStyle = '#18262C';
+        const nomeFormatado = formatarNome(formData.nome);
+        ctx.fillText(nomeFormatado, canvas.width / 2, canvas.height / 2 + 550);
+        ctx.restore();
+    }
 }
 
 // CONTROLE DE MEDICAÇÃO
