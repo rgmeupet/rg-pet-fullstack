@@ -1322,7 +1322,9 @@ canvas:hover {
         padding: 15px;
     }
     
-   
+   .upsell-img {
+        max-width: 180px;
+    }
     
     
 }
