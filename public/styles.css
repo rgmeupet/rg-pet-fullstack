@@ -855,27 +855,9 @@ canvas:hover {
 }
 
 /* Card do Upsell */
-.upsell-card {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 20px;
-    padding: 40px 30px;
-    display: inline-block;
-    backdrop-filter: blur(10px);
-    box-shadow: 
-        0 15px 35px rgba(0, 0, 0, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    position: relative;
-    z-index: 2;
-    transition: all 0.3s ease;
-}
 
-.upsell-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 
-        0 25px 50px rgba(0, 0, 0, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.8);
-}
+
+
 
 .upsell-img {
     max-width: 400px;
@@ -1323,7 +1305,7 @@ canvas:hover {
     }
     
    .upsell-img {
-        max-width: 180px;
+        max-width: 200px;
     }
     
     
