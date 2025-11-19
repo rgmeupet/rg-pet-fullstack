@@ -1300,11 +1300,17 @@ canvas:hover {
         padding: 15px;
     }
     
-   
+   .upsell-img {
+    max-width: 340px;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 3px solid white;
+    transition: all 0.3s ease;
+}
 
-   
-    
-    
+
 }
 
 
