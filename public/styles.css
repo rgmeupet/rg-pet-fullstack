@@ -775,53 +775,121 @@ canvas:hover {
 }
 
 /* Upsell Section */
+/* ===== SEÇÃO UPSELL MELHORADA ===== */
 .upsell-section {
     text-align: center;
-    background: white;
-    border-radius: 20px;
-    padding: 40px;
-    margin-top: 50px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-    border: 3px solid #27ae60;
-    animation: slideInUp 0.8s ease;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 25px;
+    padding: 50px 40px;
+    margin: 60px auto;
+    box-shadow: 
+        0 20px 60px rgba(102, 126, 234, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border: none;
+    position: relative;
+    overflow: hidden;
+    max-width: 800px;
+    animation: slideInUp 0.8s ease, float 6s ease-in-out infinite;
+}
+
+.upsell-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transform: rotate(45deg);
+    animation: shine 8s infinite;
+}
+
+.upsell-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 25px;
+    padding: 2px;
+    background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #f5576c);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    -webkit-mask-composite: xor;
+    pointer-events: none;
 }
 
 .upsell-section h4 {
-    color: #27ae60;
-    font-size: 3em;
+    color: #ffffff;
+    font-size: 1.8em;
     margin-bottom: 15px;
     font-weight: 700;
-}
-
-.upsell-section h3 {
-    color: #34495e;
-    font-size: 1.5em;
-    margin-bottom: 20px;
-    font-weight: 600;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    letter-spacing: 1px;
 }
 
 .upsell-section h2 {
-    color: #2c3e50;
-    font-size: 1.8em;
+    color: #ffffff;
+    font-size: 2.2em;
     margin-bottom: 30px;
-    font-weight: 600;
+    font-weight: 700;
+    line-height: 1.3;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
+.upsell-section h3 {
+    color: #f8f9fa;
+    font-size: 1.4em;
+    margin-bottom: 25px;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+/* Card do Upsell */
 .upsell-card {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    border-radius: 15px;
-    padding: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px 30px;
     display: inline-block;
-    
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.upsell-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .upsell-img {
-    max-width: 450px;
+    max-width: 400px;
     height: auto;
-    border-radius: 12px;
-    margin-bottom: 25px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-   
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 3px solid white;
+    transition: all 0.3s ease;
+}
+
+.upsell-img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 }
 
 .upsell-button {
@@ -1255,28 +1323,20 @@ canvas:hover {
     }
     
     .upsell-section {
-        padding: 20px;
+        padding: 30px 20px;
+        margin: 40px 20px;
+        border-radius: 20px;
     }
     
     .upsell-img {
-        max-width: 340px;
+        max-width: 280px;
+    }
+
+    .upsell-card {
+        padding: 30px 20px;
     }
     
-    .demo-smartphone {
-        width: 200px;
-        height: 400px;
-    }
     
-    .floating-help-container {
-        bottom: 20px;
-        right: 20px;
-    }
-    
-    .modern-floating-button {
-        width: 50px;
-        height: 50px;
-        font-size: 22px;
-    }
 }
 
 @media (max-width: 480px) {
@@ -1297,9 +1357,15 @@ canvas:hover {
     }
     
     .upsell-img {
-        max-width: 340px;
+        max-width: 280px;
     }
-    
+
+    .upsell-section {
+        padding: 30px 20px;
+        margin: 40px 20px;
+        border-radius: 20px;
+    }
+
     .step-title {
         font-size: 1.2em;
     }
