@@ -1307,6 +1307,13 @@ canvas:hover {
    .upsell-img {
         max-width: 200px;
     }
+
+    h4 {
+    font-size: 15px;
+    margin-bottom: 20px;
+    color: #27ae60;
+    font-weight: 700;
+}
     
     
 }
