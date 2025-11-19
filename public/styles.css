@@ -854,10 +854,6 @@ canvas:hover {
     opacity: 0.9;
 }
 
-/* Card do Upsell */
-
-
-
 
 .upsell-img {
     max-width: 400px;
@@ -1305,7 +1301,7 @@ canvas:hover {
     }
     
    .upsell-img {
-        max-width: 200px;
+        max-width: 340px;
     }
 
    
