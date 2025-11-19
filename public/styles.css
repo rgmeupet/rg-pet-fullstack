@@ -1303,7 +1303,7 @@ canvas:hover {
    .upsell-img {
     max-width: 300px;
     height: auto;
-    align-items: center;
+    margin: 0 auto 25px auto;
 }
 
 
