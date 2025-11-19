@@ -1302,8 +1302,15 @@ canvas:hover {
     
    .upsell-img {
     max-width: 300px;
+    width: 100%;
     height: auto;
-    margin: 0 auto 25px auto;
+    display: block;
+    margin: 0 auto 30px auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 3px solid white;
+    transition: all 0.3s ease;
+    object-fit: cover; /* Garante que a imagem mantenha proporções */
 }
 
 
