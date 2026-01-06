@@ -1430,6 +1430,105 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
+
+
+// ============================================
+// MODAL EBOOK ORDER BUMP - CÓDIGO ISOLADO
+// ============================================
+
+// 1. Funções específicas para este modal
+function openEbookModal() {
+    const modal = document.getElementById('ebookOrderBumpModal');
+    if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeEbookModal() {
+    const modal = document.getElementById('ebookOrderBumpModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// 2. Configuração automática do botão upsell
+document.addEventListener('DOMContentLoaded', function() {
+    // Modifica apenas o botão de upsell específico
+    const upsellButton = document.querySelector('.upsell-button');
+    
+    if (upsellButton && !upsellButton.hasAttribute('data-ebook-modified')) {
+        // Marca como modificado para evitar duplicação
+        upsellButton.setAttribute('data-ebook-modified', 'true');
+        
+        // Remove link original e abre modal
+        upsellButton.href = '#';
+        upsellButton.target = '_self';
+        upsellButton.onclick = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            openEbookModal();
+            return false;
+        };
+    }
+    
+    // Configura eventos do modal
+    setupEbookModalEvents();
+});
+
+// 3. Configura eventos específicos do modal ebook
+function setupEbookModalEvents() {
+    const modal = document.getElementById('ebookOrderBumpModal');
+    if (!modal) return;
+    
+    // Botão fechar
+    const closeBtn = modal.querySelector('.ebook-modal-close');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeEbookModal);
+    }
+    
+    // Botão NÃO (fecha modal primeiro)
+    const btnNo = modal.querySelector('.ebook-btn-no');
+    if (btnNo) {
+        btnNo.addEventListener('click', function(e) {
+            e.preventDefault();
+            closeEbookModal();
+            // Redireciona após fechar modal
+            setTimeout(() => {
+                window.location.href = this.href;
+            }, 300);
+        });
+    }
+    
+    // Botão SIM (mantém link original em nova aba)
+    const btnYes = modal.querySelector('.ebook-btn-yes');
+    if (btnYes) {
+        btnYes.addEventListener('click', function(e) {
+            // Permite abrir em nova aba normalmente
+            // O modal fecha após clique
+            setTimeout(() => {
+                closeEbookModal();
+            }, 100);
+        });
+    }
+    
+    // Fechar clicando fora
+    modal.addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeEbookModal();
+        }
+    });
+    
+    // Fechar com ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'flex') {
+            closeEbookModal();
+        }
+    });
+}
+
+
 // Debug helper
 window.debugFormData = function() {
     console.log('=== DEBUG FORM DATA ===');
